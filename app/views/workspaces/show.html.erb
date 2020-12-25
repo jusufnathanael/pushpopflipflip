@@ -1,0 +1,61 @@
+<br>
+<div class="card border-info mb-3" style="max-width: 18rem;">
+  <div class="card-body text-info">
+    <h5 div class="card-title"><strong> <%= @workspace.name %> </strong> </h5>
+    <p class="card-text"> Maximum: <%= @workspace.max %></p>
+    <p class="card-text"> Details: <%= @workspace.details %></p>
+  </div>
+</div>
+<p>
+  <% if current_user.role == "Admin" %>
+    <%= link_to 'Edit Phase', edit_workspace_path(@workspace), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-dark btn-sm'} %>
+    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+  <% end %>
+</p>
+<p>
+    <h2> <strong>Items</strong> </h2>
+</p>
+
+<% if current_user.role == "Admin"%>
+  <p>
+    <%= link_to 'Add Item', new_workspace_item_path(@workspace), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-sm'}  %>
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+  </p>
+<% end %>
+
+<table class="table">
+  <tr>
+      <th><strong>Name</strong>
+      <th><strong>Owner</strong>
+      <th><strong>Quantity</strong>
+      <th><strong>Details</strong>
+      <th><strong>Picture</strong>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+  </tr>
+  <%= render 'items/item' %>
+</table><br><br>
+
+
+<% if @workspace != Workspace.order(:position).first %>
+  <%= link_to 'Previous', workspace_previous_path(@workspace), class:"btn btn-secondary btn-sm" %>
+<% end %>
+
+<% if @workspace != Workspace.order(:position).last %>
+  <%= link_to 'Next', workspace_next_path(@workspace), class:"btn btn-light btn-sm" %>
+<% end %>
+
+<br><br>
+
+<%= link_to 'Back to List of Phases', workspaces_path, class: "btn btn-info"%>

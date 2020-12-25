@@ -1,0 +1,50 @@
+<p>
+    <h6>Current date:</h6>
+    <%= Date.current %>
+</p>
+<br>
+
+<h5><strong>Notifications</strong></h5>
+
+<table class="table">
+    <tr>
+        <td>Item</td>
+        <td>Owner</td>
+        <td>Quantity</td>
+        <td>Workspace</td>
+        <td>Due Date</td>
+    </tr>
+
+    <% Item.all.each do |i| %>
+        <% i.dues.each do |d| %>
+            <% if Workspace.all.find(i.workspace_id).name == d.name %>
+                <% if !d.duedate.blank? %>
+                    <% if d.duedate < Date.current %>
+                        <tr>    
+                            <td><%= Item.find(d.item_id).name %></td>
+                            <td><%= Item.find(d.item_id).owner %></td>
+                            <td><%= Item.find(d.item_id).quantity %></td>
+                            <td><%= d.name %></td>
+                            <td><%= d.duedate %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <% if false %>
+    <% Due.order(:duedate).each do |d| %>
+        <% if d.duedate < Date.current %>
+            <tr>    
+                <td><%= Item.find(d.item_id).name %></td>
+                <td><%= Item.find(d.item_id).owner %></td>
+                <td><%= Item.find(d.item_id).quantity %></td>
+                <td><%= d.name %></td>
+                <td><%= d.duedate %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    <% end %>
+    
+</table>

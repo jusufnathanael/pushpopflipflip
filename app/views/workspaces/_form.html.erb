@@ -1,0 +1,29 @@
+<%= form_with model: @workspace, local: true do |form| %>
+    <div class="modal-body">
+        <table>
+            <tr>
+                <td><%= form.label :name %> </td>
+            </tr>
+            <tr>
+                <td><%= form.text_field :name, placeholder: "Insert workspace name", class:"form-control" %></td>
+            </tr>
+            <tr>
+                <td><%= form.label :max %></td>
+            </tr>
+            <tr>
+                <td><%= form.number_field :max, placeholder: "Insert workspace maximum quantity", class:"form-control" %></td>
+            </tr>
+            <tr>
+                <td><%= form.label :details %></td> 
+            </tr>
+            <tr>
+                <td><%= form.text_area :details, placeholder: "Insert workspace details", class:"form-control" %></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="modal-footer">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+
+<% end %>

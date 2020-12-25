@@ -1,0 +1,32 @@
+.workspaceTable {
+  border: 2px solid black;
+}
+
+.workspaceTable th,
+td {
+  width: auto;
+}
+
+body{
+  background-color: #f0f0f0;
+}
+
+.titleBloc {
+  font-size: 30pt;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.workspaceDesc{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+table,
+th,
+td {
+  overflow: hidden;
+}
+
+tr {
+  height: 30px;
+}

@@ -1,0 +1,21 @@
+<br>
+<div class="titleBloc">
+    <h2> <strong> List of Users </strong> </h2>
+</div>
+
+<table class="table">
+    <tr>
+        <th> Username </th>
+        <th> Email </th>
+        <th> Company </th>
+        <th> Role </th>
+    </tr>
+    <% User.all.each do |user| %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.company %></td>
+            <td><%= user.role %></td>
+        </tr>
+    <% end %>
+</table>

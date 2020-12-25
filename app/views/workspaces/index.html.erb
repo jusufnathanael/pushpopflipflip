@@ -1,0 +1,65 @@
+<%= stylesheet_link_tag "workspace" %>
+
+<p>
+  <div class="titleBloc">
+    <h1><strong>Workspaces List</strong></h1>
+  </div>
+</p>
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <blockquote class="blockquote">
+      <p>Workspace Ordering</p>
+      <p class ="blockquote-footer">You can drag and drop the workspace to arrange the order | Please refresh the page after rearranging </footer>
+    </blockquote>
+    <% if Workspace.count == 0%>
+      <p> You have no workspace, please create a new workspace</p>
+    <%end%>
+    <div data-controller="drag" data-drag-url="/workspaces/:id/move">
+      <% @workspaces.order(position: :asc).each do |workspace| %>
+        <div data-id="<%= workspace.id %>" class="card card-body mb-4">
+          <%= workspace.position %>
+          <%= workspace.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if current_user.role == "Admin" %>
+  <%= link_to 'Add workspace', new_workspace_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary'}  %>
+<% end %>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-2">
+  <% @workspaces.order(position: :asc).each do |workspace| %>
+    <div class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><strong><%= workspace.name %></strong></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Maximum : <%= workspace.max %></h6>
+          <p class="card-text"><%= workspace.details %></p>
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+              <%= link_to 'Open', workspace_path(workspace), class:"btn btn-warning btn-sm" %>
+              <% if current_user.role == "Admin" %>
+                <%= link_to 'Edit', edit_workspace_path(workspace), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-outline-primary btn-sm'} %>
+                <%= link_to 'Delete', workspace_path(workspace), method: :delete, data: { confirm: 'Are you sure to delete?' }, class:"btn btn-outline-danger btn-sm"%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
+
+<%= link_to 'Back to Home Screen', root_path, class:"btn btn-info" %>

@@ -1,0 +1,28 @@
+<br>
+<div class="w-75 p-3" style="background-color: #ffffff;">
+  <div class="card">
+    <div class="card-header">
+      <h2><strong>Forgot your password?</strong></h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions", class:"btn btn-dark" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <div class="btn-group" role="group">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+

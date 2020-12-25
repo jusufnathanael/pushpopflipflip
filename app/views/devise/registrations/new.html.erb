@@ -1,0 +1,65 @@
+<br>
+<div class="w-75 p-3" style="background-color: #ffffff;">
+  <div class="card">
+    <div class="card-header">
+      <h2><strong>User Sign Up</strong></h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :company %><br />
+          <%= f.text_field :company %>
+        </div>
+        <br>
+        
+        <% if User.all.count == 0 %>
+          <div class="field">
+            <%= f.label :role %><br />
+            <%= f.select :role, ["Admin"] ,class: "btn btn-danger dropdown-toggle"%>
+          </div>
+        <% else %>
+          <div class="field">
+            <%= f.label :role %><br />
+            <%= f.select :role, ["Staff"] ,class: "btn btn-danger dropdown-toggle"%>
+          </div>
+        <% end %>
+        
+        <br>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+        <br>
+        <%= f.submit "Register Account" ,class:"btn btn-primary"%>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <div class="actions">
+        <%= link_to "Cancel User Sign Up", :back, class:"btn btn-secondary btn-large"  %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

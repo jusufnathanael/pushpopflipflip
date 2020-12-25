@@ -1,0 +1,59 @@
+<%= form_with(model: [ @workspace, @item ], local: true) do |form| %>
+
+  <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel" style="text-align:left;">Edit Item</h4>
+      <button type="button" class="close" style="text-align:left;" data-dismiss="modal"><h3>X</h3></button>
+  </div>
+
+  <div class="modal-body">
+      <table>  
+          <tr>
+              <td><%= form.label :name %></td>
+              <td><%= form.text_field :name %></td>
+          </tr>
+          <tr>
+              <td><%= form.label :owner %></td>
+              <td><%= form.text_field :owner %></td>
+          </tr>    
+          <tr>
+              <td><%= form.label :quantity %></td>
+              <td><%= form.number_field :quantity %></td>
+          </tr>
+          <tr>
+              <td><%= form.label :details %></td>
+              <td><%= form.text_area :details %></td>
+          </tr>
+          <tr>
+              <td><%= form.label :picture %></td>
+              <td><%= form.file_field :picture %></td>
+          </tr>
+      </table><br>
+   
+      <h5>Due Dates</h5>
+      <table>
+        <% Workspace.all.zip(@item.due_ids).each do |w,d| %>
+          <tr>
+            <td><%= w.name %></td>
+            <td>
+              <% if !d.blank? %>
+                <%= form.fields_for :dues, Due.find(d) do |dd| %>
+                  <%= dd.date_field :duedate %>
+                <% end %>
+              <% else %>
+                <%= form.fields_for :dues, Due.new do |dd| %>
+                  <%= dd.hidden_field :name, value: w.name, :readonly => true %>
+                  <%= dd.date_field :duedate %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to 'Back', workspace_path(@workspace), class:"btn btn-info" %>
+    <button class="btn btn-primary">Submit</button>
+  </div>
+
+<% end %>

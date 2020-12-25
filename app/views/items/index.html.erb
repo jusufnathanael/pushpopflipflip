@@ -1,0 +1,13 @@
+<br>
+<div class="titleBloc">
+    <h2> <strong> List of Finished Items </strong> </h2>
+</div>
+
+<%= link_to 'All Items', items_all_path, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Current Items', items_current_path, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Finished Items', items_finished_path,class:"btn btn-primary btn-sm" %>
+<br>
+<br>
+
+<%= render 'index' %><br>
+<%= link_to 'Download Finished Items', items_finished_path(format: :xlsx), class:"btn btn-info"  %>
