@@ -1,5 +1,7 @@
 # PushPopFlipFlip Production Line Manager
 
+This app is deployed to https://pushpopflipflip.herokuapp.com/.
+
 ### Motivation
 
 The story behind our project is because there are a lot of startup companies emerging around the world. These startups focus on many areas, and many of them are focused on small scale creative industries that design and manufacture life-changing products and solutions. These startup companies are tight on their budget and their human resources. Many could not afford to hire a lot of people, let alone software developers to keep track of their business i.e. their manufacturing process and timetable.
@@ -28,16 +30,6 @@ Small and home manufacturing industries/businesses
 
 
 ### Features
-
-1. User Authentication
-2. Home Page
-
-CRUD for Logging Items and Workspaces
-Drag and drop functionality for easier management
-Login system (admin and user)
-Gmail login (using google firebase)
-Email Notification for Overdue Items
- 
 
 #### 1. User Authentication
 
