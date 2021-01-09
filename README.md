@@ -35,101 +35,41 @@ Small and home manufacturing industries/businesses
 
 This application is secured with user authentication at the beginning of the session. User can sign up using their email and create an account. Below are some of the screenshots of the user authentication pages:
 
-Welcome page
+- Welcome page
+- Sign up page
+- Log in page
+- Edit user / delete account page
 
-
-Sign up
-
-
-
-Log in
-
-
-Edit user / delete account
-
-
-### 2. Home Page
 On the home page, users will be notified about items that have reached the due dates but not yet finished.
 
+#### 2. Workspaces and Items
 
+Users can view the overall workspaces and rearrange the order using the drag and drop feature.
+We have implemented pop-up windows for adding and editing workspace and items.
 
+#### 3. Item Properties
 
-3. Workspaces
-
-Drag and drop
-Users can drag and drop the workspaces to rearrange the overall order.
-
-
-
-
-Overall workspaces
-
-
-Pop up windows for new and edit workspace
-4. Items
-
-Pop-up windows for new and edit item
-
-
-Implement due dates
-Users can set the due dates for each workspace
-
-
-Picture uploader
-We also implemented a picture uploader system, in which a user can upload an image for a specific item. The picture uploader would automatically resize the image to a size that is comfortable to view. The image would show up in the table of items in each of the workspaces. Adding the picture is not mandatory for each of the items.
-
-Generate QR code
 All items are equipped with a QR code to ease users in finding or managing the items.
 
+Every item also has certain due dates for each of the workspaces.
 
-All, current, and finished items + column sort
-Users can view the list of all items, current items, and finished items with an addition of column sort function.
+We also implemented a picture uploader system, in which a user can upload an image for a specific item. The picture uploader would automatically resize the image to a size that is comfortable to view. The image would show up in the table of items in each of the workspaces. Adding the picture is not mandatory for each of the items.
 
+#### 4. Link Between Workspace
 
-
-Export to Excel
-Users can export the list of finished items into an Excel file by clicking the ‘Download Finished Items’ button.
-
-
-
-
-5. Link Between Workspace
-
-Link to next and previous workspace
-Users can navigate to the next and previous workspace.
-
-
-Move items between workspace
 We have implemented the function to move an item from one workspace to another workspace. This is done so that we can move an item that has finished its current phase to the next phase. We also implemented the revert function to allow the user to undo the action that has been made by moving the item to its previous phase. This is done by adding the next and previous method on the workspace model, so that we can get the id of the next or the previous workspaces.
 
+#### 5. Export to Excel
 
-
-
-6. Add CSS using Bootstrap
-
-
-7. Additional Settings/Features
-
-Database initialisation
-We have migrated from using sqlite3 database to using postgresql database. We think that the postgresql offers more features that are well suited for our app. With the addition of the pgadmin4, we can see the database tables clearer, thus giving us more information when debugging our code.
-
-
-Website deployment
-We have deployed our web application from our Github repository using Herokuapp. Currently, the website is hosted at https://pushpopflipflip.herokuapp.com/
-You can try logging in, creating an account, and go through our application
-
-Continuous integration (Travis CI)
-We have implemented the Travis CI for our app. The travis CI is integrated at our application source code, and also our github repository. The CI is intended to smoothen out the deployment process of our website.
-
-
-
+Users can view the list of all items, current items, and finished items with an addition of column sort function.
+Subsequently, users can also export the list of finished items into an Excel file by clicking the ‘Download Finished Items’ button.
  
 
 ### Tech Stack
 
-Ruby 2.6.0
-Rails 6.0.3
-Bundler 2.1.4
-Yarn 1.22.4
-Node.js 12.16.3
-PostgreSQL 12.3
+- Ruby 2.6.0
+- Rails 6.0.3
+- Bundler 2.1.4
+- Yarn 1.22.4
+- Node.js 12.16.3
+- PostgreSQL 12.3
