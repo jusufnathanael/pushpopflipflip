@@ -2,6 +2,8 @@
 
 This app is deployed to https://pushpopflipflip.herokuapp.com/.
 
+Author: Jusuf Nathanael, Aldo Maximillian Sugito
+
 ### Motivation
 
 The story behind our project is because there are a lot of startup companies emerging around the world. These startups focus on many areas, and many of them are focused on small scale creative industries that design and manufacture life-changing products and solutions. These startup companies are tight on their budget and their human resources. Many could not afford to hire a lot of people, let alone software developers to keep track of their business i.e. their manufacturing process and timetable.
